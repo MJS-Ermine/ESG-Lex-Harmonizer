@@ -1,0 +1,21 @@
+[project]
+name = "esg-lex-harmonizer"
+version = "0.1.0"
+description = "ESG法規衝突偵測與協調建議原型系統"
+authors = [
+    {name = "MJS-Ermine"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+
