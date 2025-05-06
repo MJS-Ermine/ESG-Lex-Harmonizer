@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Dict, Any
 from esg_lex_harmonizer.input_preprocessing.preprocessor import LegalPreprocessor

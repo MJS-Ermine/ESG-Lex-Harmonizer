@@ -3,7 +3,6 @@ Streamlit demo：水利法 ESG 衝突分析互動平台
 """
 import streamlit as st
 import requests
-import pandas as pd
 import plotly.graph_objects as go
 
 API_URL = "http://localhost:8000"

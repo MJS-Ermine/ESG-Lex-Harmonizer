@@ -1,4 +1,3 @@
-import pytest
 from fastapi.testclient import TestClient
 from esg_lex_harmonizer.api.main import app
 

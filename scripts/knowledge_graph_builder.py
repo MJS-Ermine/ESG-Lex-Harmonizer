@@ -1,5 +1,5 @@
 import os
-from typing import List, Dict
+from typing import List
 import networkx as nx
 import matplotlib.pyplot as plt
 import jieba

@@ -1,4 +1,3 @@
-import pytest
 from esg_lex_harmonizer.impact.analyzer import ESGImpactAnalyzer
 
 def test_analyze_impact():
