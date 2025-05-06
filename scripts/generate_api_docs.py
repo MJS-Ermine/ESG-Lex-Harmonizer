@@ -1,6 +1,5 @@
 import requests
 import os
-from typing import Any
 
 def save_openapi_schema(api_url: str, out_path: str) -> None:
     """下載 FastAPI OpenAPI schema 並儲存為 markdown 文件。

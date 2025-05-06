@@ -1,4 +1,3 @@
-import pytest
 from esg_lex_harmonizer.input_preprocessing.preprocessor import LegalPreprocessor
 
 def test_preprocess_law_text():

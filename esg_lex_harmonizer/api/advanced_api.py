@@ -4,7 +4,7 @@
 from fastapi import FastAPI, HTTPException, Header, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Optional, List, Dict
+from typing import List, Dict
 import os
 from esg_lex_harmonizer.rag.pipeline import SimpleRAG
 from esg_lex_harmonizer.knowledge_expansion.expander import ArticleExpander

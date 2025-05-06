@@ -1,10 +1,8 @@
-from typing import List, Dict
+from typing import Dict
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.llms import HuggingFacePipeline
 from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
-import os
 
 # 假設有一組法規條文
 DOCUMENTS = [

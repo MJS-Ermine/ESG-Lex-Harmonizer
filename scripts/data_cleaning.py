@@ -1,7 +1,6 @@
 import os
 import json
 import csv
-from typing import List
 
 def clean_text(text: str) -> str:
     """簡單正規化：去除多餘空白、換行。"""

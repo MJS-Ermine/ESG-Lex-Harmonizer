@@ -1,4 +1,3 @@
-import pytest
 from esg_lex_harmonizer.harmonizer.recommender import HarmonizationRecommender
 
 def test_generate_recommendations():
