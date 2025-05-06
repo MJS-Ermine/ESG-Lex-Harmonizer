@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    command: uvicorn esg_lex_harmonizer.api.advanced_api:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      - ESG_API_KEY=demo-key
+      - ESG_CORS_ORIGINS=*
+    restart: unless-stopped
+  frontend:
+    build: .
+    command: streamlit run scripts/advanced_streamlit_platform.py --server.port 8501
+    ports:
+      - "8501:8501"
+    environment:
+      - ESG_API_URL=http://api:8000
+      - ESG_API_KEY=demo-key
+    depends_on:
+      - api
+    restart: unless-stopped 
