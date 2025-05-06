@@ -31,3 +31,15 @@ class ESGImpactAnalyzer:
             impact["E"] += 2
         # TODO: 更細緻的因果推斷與量化
         return impact 
+
+def evaluate_esg_impact(law_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    根據 law_data 回傳 ESG 指標（MVP 版）。
+
+    Args:
+        law_data (Dict[str, Any]): 法規資料
+
+    Returns:
+        Dict[str, Any]: ESG 指標分數
+    """
+    return law_data.get("esg_indicators", {}) 
