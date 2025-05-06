@@ -1,0 +1,31 @@
+name: API Docs
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi
+      - name: Run FastAPI
+        run: |
+          nohup poetry run uvicorn esg_lex_harmonizer.api.advanced_api:app --host 127.0.0.1 --port 8000 &
+          sleep 10
+      - name: Generate API Docs
+        run: poetry run python scripts/generate_api_docs.py
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages 
