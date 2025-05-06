@@ -82,4 +82,15 @@ st.markdown("""
     .stButton>button { background:#2E86AB; color:white; font-weight:600; }
     .stTextInput>div>input { background:#F6F9FB; }
 </style>
+""", unsafe_allow_html=True)
+
+# 合作/指導單位 Logo 與說明
+st.markdown("""
+<div style='margin-top:40px; text-align:center;'>
+  <img src='https://raw.githubusercontent.com/MJS-Ermine/ESG-Lex-Harmonizer/main/docs/nstc_ssd_logo.png' width='320'>
+  <div style='font-size:18px; color:#888; margin-top:10px;'>
+    指導單位：NSTC × SSD Alliance for ESG Business Transformation<br>
+    本平台部分內容用於 ESG 獎學金申請展示
+  </div>
+</div>
 """, unsafe_allow_html=True) 

@@ -6,6 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List, Dict
 import os
+from esg_lex_harmonizer.rag.pipeline import SimpleRAG
+from esg_lex_harmonizer.knowledge_expansion.expander import ArticleExpander
 
 # === 安全設計：API Key 驗證 ===
 API_KEY = os.environ.get("ESG_API_KEY", "demo-key")
@@ -29,20 +31,19 @@ app.add_middleware(
 class RagQuery(BaseModel):
     query: str
 
+rag_pipeline = SimpleRAG()
+
 @app.post("/rag_qa", dependencies=[Depends(verify_api_key)])
 def rag_qa(req: RagQuery) -> Dict[str, str]:
-    # TODO: 真正串接 RAG pipeline，這裡用假資料
-    if "例外" in req.query:
-        answer = "特殊情況下工業用水可達50%。"
-    else:
-        answer = "工業用水不得超過30%。"
-    return {"query": req.query, "answer": answer}
+    result = rag_pipeline.query(req.query)
+    return {"query": req.query, "answer": result["answer"], "source": result["source"]}
 
 # === 知識擴充 API ===
 class KnowledgeRequest(BaseModel):
     articles: List[str]
 
+expander = ArticleExpander()
+
 @app.post("/expand_knowledge", dependencies=[Depends(verify_api_key)])
 def expand_knowledge(req: KnowledgeRequest) -> List[Dict[str, str]]:
-    # TODO: 真正串接知識擴充模組，這裡用假資料
-    return [{"條文": art, "ESG": "E" if "污染" in art else "G"} for art in req.articles] 
+    return expander.expand(req.articles) 
