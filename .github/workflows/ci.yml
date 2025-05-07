@@ -22,7 +22,7 @@ jobs:
       - name: Lint with Ruff
         run: |
           pip install ruff
-          ruff .
+          ruff check . --fix
       - name: Run tests
         run: poetry run pytest
       - name: Build Docker image
